@@ -1,0 +1,4 @@
+### DELETE request to server
+DELETE localhost:3000/api/people/1
+
+###

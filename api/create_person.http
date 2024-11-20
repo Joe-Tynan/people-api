@@ -1,0 +1,10 @@
+### POST request to server
+POST localhost:3000/api/people
+Content-Type: application/json
+
+{
+  "name": "Damian",
+  "number": "888"
+}
+
+###
