@@ -1,23 +1,23 @@
-const express = require('express');
-const app = express();
+const express = require('express')
+const app = express()
 
-const morgan = require('morgan');
-const cors = require('cors');
+const morgan = require('morgan')
+const cors = require('cors')
 require('dotenv').config()
 
-app.use(express.static('dist'));
-app.use(express.json());
-app.use(cors());
+app.use(express.static('dist'))
+app.use(express.json())
+app.use(cors())
 
 morgan.token('body', request => {
-    return JSON.stringify(request.body);
+    return JSON.stringify(request.body)
 })
 
-app.use(morgan(':method :url - :response-time ms :body'));
+app.use(morgan(':method :url - :response-time ms :body'))
 
-const Person = require('./models/person');
+const Person = require('./models/person')
 
-let date = new Date();
+let date = new Date()
 
 app.get('/api/info', (request, response) => {
     Person.find({}).then(people => {
@@ -80,7 +80,7 @@ app.put('/api/people/:id', (request, response, next) => {
 })
 
 app.delete('/api/people/:id', (request, response, next) => {
-    Person.findByIdAndDelete(request.params.id).then(result => {
+    Person.findByIdAndDelete(request.params.id).then(() => {
         response.status(204).end()
     }).catch(error => {
         next(error)
